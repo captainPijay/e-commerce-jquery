@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('customer_id');
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 
