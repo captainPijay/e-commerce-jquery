@@ -14,21 +14,22 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
+        \App\Models\User::factory()->create([
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('12345678')
+        ]);
+        // \App\Models\Products::create([
+        //     'name' => 'ABC',
+        //     'description' => 'Cetak ABC',
+        //     'price' => '1000',
+        //     'category' => 'Cetak Digital',
         // ]);
-        \App\Models\Products::create([
-            'name' => 'ABC',
-            'description' => 'Cetak ABC',
-            'price' => '1000',
-            'category' => 'Cetak Digital',
-        ]);
-        \App\Models\Products::create([
-            'name' => 'XYZ',
-            'description' => 'Copy XYZ',
-            'price' => '100',
-            'category' => 'Fotocopy',
-        ]);
+        // \App\Models\Products::create([
+        //     'name' => 'XYZ',
+        //     'description' => 'Copy XYZ',
+        //     'price' => '100',
+        //     'category' => 'Fotocopy',
+        // ]);
     }
 }

@@ -4,10 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\OrderItems;
 use App\Models\Orders;
+use App\Models\Products;
 use Illuminate\Http\Request;
 
 class OrdersController extends Controller
 {
+    public function index()
+    {
+        $data = Products::all();
+        return view('front_office.orders.index', [
+            'data' => $data,
+            'title' => 'Pesan Produk'
+        ]);
+    }
     public function store(Request $request)
     {
         $request->validate([
@@ -20,7 +29,9 @@ class OrdersController extends Controller
             return str_replace([',', '.'], '', $price);
         }, $request->prices);
 
-        $order = Orders::create();
+        $order = new Orders();
+        $order->customer_id = auth()->guard('customers')->user()->id;
+        $order->save();
 
         foreach ($request->products as $index => $productId) {
             $orderItem = new OrderItems();

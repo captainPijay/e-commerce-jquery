@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Products;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 
@@ -116,5 +118,19 @@ class ProductsController extends Controller
         $productsData->delete();
         flash('Berhasil Menghapus Data');
         return back();
+    }
+    public function dashboard()
+    {
+        $totalRupiah = DB::table('order_items')
+            ->join('orders', 'order_items.order_id', '=', 'orders.id')
+            ->whereDate('orders.created_at', Carbon::today())
+            ->sum(DB::raw('order_items.quantity * order_items.price'));
+
+        $totalRupiah = 'Rp. ' . number_format($totalRupiah, 2, ',', '.');
+
+        return view('back_office.dashboard', [
+            'totalRupiah' => $totalRupiah,
+            'title' => 'Total Rupiah Penjualan Produk Hari Ini'
+        ]);
     }
 }

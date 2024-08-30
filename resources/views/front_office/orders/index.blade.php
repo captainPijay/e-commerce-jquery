@@ -30,7 +30,7 @@
         `).join('');
 
                 $('#orderItemsContainer').append(`
-                    <div class="order-item">
+                    <div class="card shadow order-item p-3 mt-3">
                         <div class="form-group">
                             <label for="product_${productCounter}">Product ${productCounter}</label>
                             <select class="form-control product-select" id="product_${productCounter}" name="products[]">
