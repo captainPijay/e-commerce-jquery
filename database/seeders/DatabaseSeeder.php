@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Products::create([
             'name' => 'XYZ',
             'description' => 'Copy XYZ',
-            'price' => '1000',
+            'price' => '100',
             'category' => 'Fotocopy',
         ]);
         \App\Models\Orders::create([
