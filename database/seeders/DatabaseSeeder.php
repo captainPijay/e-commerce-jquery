@@ -20,8 +20,13 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('12345678')
         ]);
         \App\Models\Customers::create([
-            'name' => 'customer',
-            'email' => 'customer@gmail.com',
+            'name' => 'customer 1',
+            'email' => 'customer1@gmail.com',
+            'password' => bcrypt('12345678')
+        ]);
+        \App\Models\Customers::create([
+            'name' => 'customer 2',
+            'email' => 'customer2@gmail.com',
             'password' => bcrypt('12345678')
         ]);
         \App\Models\Products::create([
@@ -39,9 +44,12 @@ class DatabaseSeeder extends Seeder
         \App\Models\Orders::create([
             'customer_id' => 1,
         ]);
-        for ($i = 1; $i < 500; $i++) {
+        \App\Models\Orders::create([
+            'customer_id' => 2,
+        ]);
+        for ($i = 1; $i <= 500; $i++) {
             \App\Models\OrderItems::create([
-                'order_id' => 1,
+                'order_id' => rand(1, 2),
                 'products_id' => rand(1, 2),
                 'quantity' => 1,
                 'price' => 1000

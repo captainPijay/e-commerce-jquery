@@ -16,7 +16,7 @@
     </li>
     <li class="nav-item {{ request()->is("back-office/products") ? 'selected-list': '' }}">
         <a class="nav-link" href="/back-office/products">
-            <span class="{{ Request::is('back-office/products') ? 'active-link': 'death-link' }}"><i class="ri-home-smile-2-line iconSidebarList"></i>Products</span>
+            <span class="{{ Request::is('back-office/products') ? 'active-link': 'death-link' }}"><i class="ri-store-line iconSidebarList"></i>Products</span>
         </a>
     </li>
     @endcan
@@ -24,13 +24,13 @@
     @can('customer')
     <li class="nav-item {{ request()->is("front-office/orders/*") ? 'selected-list': '' }}">
         <a class="nav-link" href="/front-office/orders">
-            <span class="{{ Request::is('front-office/orders') ? 'active-link': 'death-link' }}"><i class="ri-home-smile-2-line iconSidebarList"></i>Pesan Produk</span>
+            <span class="{{ Request::is('front-office/orders') ? 'active-link': 'death-link' }}"><i class="ri-shopping-bag-3-line iconSidebarList"></i>Pesan Produk</span>
         </a>
     </li>
     @endcan
     <li class="nav-item {{ request()->is("order-item") || Request::is('order-detail/*') ? 'selected-list': '' }}">
         <a class="nav-link" href="/order-item">
-            <span class="{{ Request::is('order-item') ? 'active-link': 'death-link' }}"><i class="ri-home-smile-2-line iconSidebarList"></i>Pesanan</span>
+            <span class="{{ Request::is('order-item') ? 'active-link': 'death-link' }}"><i class="ri-shopping-cart-line iconSidebarList"></i>Pesanan</span>
         </a>
     </li>
     <li class="nav-item">

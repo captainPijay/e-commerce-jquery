@@ -43,19 +43,19 @@
                 </div>
                 <form action="{{ route('authenticate') }}" method="POST" class="form-input" id="formLogin">
                     @csrf
-                        <div class="input-primary">
-                            <div class="padding-input"><i>@</i></div>
-                            <div class="input-form"><input type="text" name="email" placeholder="@error('email'){{ $message }}@else{{ 'email' }}@enderror" @error('email') class="error" @enderror></div>
+                    <div class="input-primary">
+                        <div class="padding-input"><i>@</i></div>
+                        <div class="input-form"><input type="text" name="email" placeholder="@error('email'){{ $message }}@else{{ 'email' }}@enderror" @error('email') class="error" @else value="{{ old('email') }}" @enderror></div>
+                    </div>
+                    <div class="input-primary">
+                        <div class="padding-input"><i class="ri-lock-line"></i></div>
+                        <div class="input-form" style="display: flex; position: relative;">
+                            <input type="password" name="password" id="passwordInput" placeholder="@error('password'){{ $message }}@else{{ 'Password' }}@enderror" @error('password') class="error" @else value="{{ old('password') }}" @enderror style="padding-right: 40px;">
+                            <span class="toggle-password" onclick="togglePasswordVisibility()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">
+                                <i class="ri-eye-fill"></i>
+                            </span>
                         </div>
-                        <div class="input-primary">
-                            <div class="padding-input"><i class="ri-lock-line"></i></div>
-                            <div class="input-form" style="display: flex; position: relative;">
-                                <input type="password" name="password" id="passwordInput" placeholder="@error('password'){{ $message }}@else{{ 'Password' }}@enderror" @error('password') class="error" @enderror style="padding-right: 40px;">
-                                <span class="toggle-password" onclick="togglePasswordVisibility()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">
-                                    <i class="ri-eye-fill"></i>
-                                </span>
-                            </div>
-                        </div>
+                    </div>
 
                 </form>
                 <div class="d-flex flex-column text-center">

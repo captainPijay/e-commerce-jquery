@@ -24,6 +24,7 @@ class LoginController extends Controller
         ]);
 
         if ($validator->fails()) {
+            flash()->addError('Gagal Login');
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
@@ -39,10 +40,8 @@ class LoginController extends Controller
             flash('Berhasil Login Users');
             return redirect()->intended('/back-office/dashboard');
         }
-
-        return back()->withErrors([
-            'email' => 'Data Tidak Sesuai',
-        ])->onlyInput('email');
+        flash()->addError('Gagal Login Email Atau Password Salah');
+        return back();
     }
 
     public function logout(Request $request)
