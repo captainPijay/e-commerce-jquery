@@ -8,4 +8,6 @@
 
 4. Untuk file database nya berada di folder database dengan nama tes-fullstack.sql
 
+5. Ini merupakan website yang saya kerjakan dalam waktu kurang dari 24 jam, dikarenakan memiliki urusan mendesak, selanjutnya saya akan tetap mengembangkan website ini baik jika saya diterima maupun tidak
+
 Terima Kasih!!!
