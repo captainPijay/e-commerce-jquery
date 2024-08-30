@@ -85,13 +85,13 @@
             pagingType: 'full_numbers',
             dom: '<"row"<"col-sm-6 section-table-tl"<"div section-table-length"l><"div section-table-info"Z>><"col-sm-6 section-table-tr"<"div section-table-search"f><"div section-table-button"B>>><"row"<"col-sm-12"tr>><"row"<"col-sm-8 d-flex align-items-center"i><"col-sm-4 d-flex justify-content-end"p>>',
             initComplete: function () {
-                var addButton = $(
+                const addButton = $(
                     '<button class="btn btn-primary btn-add" data-bs-target="#ModalTambah" data-bs-toggle="modal"><i class="ri-add-line"></i>&nbsp;Tambah Data</button>'
                 );
 
                 $('.section-table-button').append(addButton).css("text-align", "end");
 
-                var infoSection = $(
+                const infoSection = $(
                     '<div class="icon-info"><i class="ri-building-4-line"></i></div><div class="text-info"><span>Total Data Produk</span><h5>0</h5></div>'
                 );
 
