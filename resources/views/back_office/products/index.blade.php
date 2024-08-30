@@ -92,7 +92,7 @@
                 $('.section-table-button').append(addButton).css("text-align", "end");
 
                 var infoSection = $(
-                    '<div class="icon-info"><i class="ri-building-4-line"></i></div><div class="text-info"><span>Total Data Anak</span><h5>0</h5></div>'
+                    '<div class="icon-info"><i class="ri-building-4-line"></i></div><div class="text-info"><span>Total Data Produk</span><h5>0</h5></div>'
                 );
 
                 $('.section-table-info').append(infoSection);

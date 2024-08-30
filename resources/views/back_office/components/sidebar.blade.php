@@ -8,9 +8,14 @@
   </div>
   <ul class="sidebar-nav" data-coreui="navigation" data-simplebar>
     <li class="nav-title active">MAIN MENU</li>
-    <li class="nav-item {{ request()->is("back-office/pegawai/*") || Request::is('back-office/pegawai') ? 'selected-list': '' }}">
-      <a class="nav-link" href="/back-office/pegawai">
-        <span class="{{ Request::is('back-office/pegawai') ? 'active-link': 'death-link' }}"><i class="ri-id-card-line iconSidebarList"></i>Pegawai</span>
+    <li class="nav-item {{ request()->is("back-office/dashboard/*") || Request::is('back-office/dashboard') ? 'selected-list': '' }}">
+      <a class="nav-link" href="/back-office/dashboard">
+        <span class="{{ Request::is('back-office/dashboard') ? 'active-link': 'death-link' }}"><i class="ri-home-smile-2-line iconSidebarList"></i>Dashboard</span>
+      </a>
+    </li>
+    <li class="nav-item {{ request()->is("back-office/products/*") || Request::is('back-office/products') ? 'selected-list': '' }}">
+      <a class="nav-link" href="/back-office/products">
+        <span class="{{ Request::is('back-office/products') ? 'active-link': 'death-link' }}"><i class="ri-home-smile-2-line iconSidebarList"></i>Products</span>
       </a>
     </li>
     <li class="nav-item">

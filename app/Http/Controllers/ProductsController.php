@@ -53,8 +53,8 @@ class ProductsController extends Controller
         $storeUrl = 'products.store';
         $deleteUrl = 'products.destroy';
         $updateUrl = 'products.update';
-        $title = "Products";
-        $formTitle = "Products";
+        $title = "Data Produk";
+        $formTitle = "Produk";
         return view('back_office.products.index', compact('request', 'getData', 'deleteUrl', 'updateUrl', 'title', 'formTitle', 'storeUrl'));
     }
     public function store(Request $request)
