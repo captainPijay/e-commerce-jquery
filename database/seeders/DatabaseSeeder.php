@@ -19,6 +19,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => bcrypt('12345678')
         ]);
+        \App\Models\Customers::create([
+            'name' => 'customer',
+            'email' => 'customer@gmail.com',
+            'password' => bcrypt('12345678')
+        ]);
         \App\Models\Products::create([
             'name' => 'ABC',
             'description' => 'Cetak ABC',

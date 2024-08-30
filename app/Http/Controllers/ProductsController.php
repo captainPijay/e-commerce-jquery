@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Orders;
 use App\Models\Products;
+use App\Models\OrderItems;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
@@ -114,11 +116,22 @@ class ProductsController extends Controller
     }
     public function destroy($id)
     {
-        $productsData = Products::findOrFail($id);
-        $productsData->delete();
+        $product = Products::findOrFail($id);
+
+        $orderItemsCount = OrderItems::where('products_id', $id)->count();
+
+        if ($orderItemsCount > 0) {
+            flash()->addError('Tidak dapat menghapus produk karena masih ada Pesanan yang terkait.');
+            return back();
+        }
+
+        $product->delete();
+
         flash('Berhasil Menghapus Data');
         return back();
     }
+
+
     public function dashboard()
     {
         $totalRupiah = DB::table('order_items')

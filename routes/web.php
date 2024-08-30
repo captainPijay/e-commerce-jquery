@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderItemsController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\RegisterController;
@@ -39,4 +40,11 @@ Route::middleware(['auth:web'])->prefix('back-office')->group(function () {
 Route::middleware(['auth:customers'])->prefix('front-office')->group(function () {
     Route::post('/save-order', [OrdersController::class, 'store']);
     Route::get('/orders', [OrdersController::class, 'index'])->name('orders.index');
+});
+Route::middleware('auth:web,customers')->group(function () {
+    Route::get('/order-item', [OrderItemsController::class, 'index'])->name('orderItem.index');
+    Route::delete('/order-delete/{id}', [OrderItemsController::class, 'delete'])->name('orderItem.delete');
+
+    Route::get('/order-detail/{id}', [OrderItemsController::class, 'show'])->name('orderItem.show');
+    Route::delete('/order-destroy/{id}', [OrderItemsController::class, 'destroy'])->name('orderItem.destroy');
 });
