@@ -64,7 +64,6 @@
                 $('#totalPrice').text(total.toLocaleString());
             }
 
-            // Update price on product or quantity change
             $('#orderItemsContainer').on('change', '.product-select, .quantity-input', function() {
                 let row = $(this).closest('.order-item');
                 let price = row.find('.product-select option:selected').data('price') || 0;
@@ -74,21 +73,16 @@
                 calculateTotal();
             });
 
-            // Remove product row
             $('#orderItemsContainer').on('click', '.remove-product', function() {
                 $(this).closest('.order-item').remove();
                 calculateTotal();
             });
 
-            // Handle form submission
             $('#orderForm').on('submit', function(e) {
                 e.preventDefault();
 
-                // Collect data from the form
                 let formData = $(this).serializeArray();
-                console.log(formData); // Replace with AJAX call to save data to the backend
 
-                // Example AJAX call
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -96,7 +90,7 @@
                 });
 
                 $.ajax({
-                    url: '/back-office/save-order',
+                    url: '/front-office/save-order',
                     method: 'POST',
                     data: formData,
                     success: function(response) {

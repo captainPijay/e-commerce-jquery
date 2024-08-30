@@ -6,7 +6,7 @@
         <i class="ri-user-fill"></i>
       </div>
       <div class="user-name">
-        halo
+        {{ auth()->user()->name ?? auth()->guard('customers')->user()->name }}
       </div>
     </div>
   </div>
