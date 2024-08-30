@@ -78,14 +78,25 @@
             dom: '<"row"<"col-sm-6 section-table-tl"<"div section-table-length"l><"div section-table-info"Z>><"col-sm-6 section-table-tr"<"div section-table-search"f><"div section-table-button"B>>><"row"<"col-sm-12"tr>><"row"<"col-sm-8 d-flex align-items-center"i><"col-sm-4 d-flex justify-content-end"p>>',
             initComplete: function () {
 
-                var infoSection = $(
+                const infoSection = $(
                     '<div class="icon-info"><i class="ri-building-4-line"></i></div><div class="text-info"><span>Total Data Pesanan</span><h5>0</h5></div>'
                 );
+                const filterSection = ` <form id="filterForm" action="{{ route('orderItem.index') }}" method="GET">
+                                            <select class="form-select" aria-label=".form-select-lg example" id="filterSelect" name="filter">
+                                                <option selected disabled>Pilih Filter</option>
+                                                <option value="terbaru" {{ $request->filter == 'terbaru' ? 'selected' : '' }}>Terbaru</option>
+                                                <option value="terlama" {{ $request->filter == 'terlama' ? 'selected' : '' }}>Terlama</option>
+                                            </select>
+                                        </form> `
 
                 $('.section-table-info').append(infoSection);
+                $('.section-table-tr').append(filterSection);
 
                 $('.section-table-info h5').text("{{ $getData->count() }}");
 
+                $('#filterSelect').change(function() {
+                    $('#filterForm').submit();
+                });
             },
         })
     }

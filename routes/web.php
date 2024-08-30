@@ -38,8 +38,8 @@ Route::middleware(['auth:web'])->prefix('back-office')->group(function () {
 });
 
 Route::middleware(['auth:customers'])->prefix('front-office')->group(function () {
-    Route::post('/save-order', [OrdersController::class, 'store']);
     Route::get('/orders', [OrdersController::class, 'index'])->name('orders.index');
+    Route::post('/save-order', [OrdersController::class, 'store']);
 });
 Route::middleware('auth:web,customers')->group(function () {
     Route::get('/order-item', [OrderItemsController::class, 'index'])->name('orderItem.index');

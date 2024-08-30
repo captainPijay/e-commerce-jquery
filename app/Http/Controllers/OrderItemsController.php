@@ -14,11 +14,24 @@ class OrderItemsController extends Controller
     private $counter = 1;
     public function index(Request $request)
     {
+        $data = Orders::with('customers');
+
         if (Auth::guard('customers')->check()) {
-            $data = Orders::with('customers')->where('customer_id', auth()->guard('customers')->id());
-        } else {
-            $data = Orders::with('customers')->latest();
+            $data->where('customer_id', auth()->guard('customers')->id());
         }
+
+        if ($request->has('filter')) {
+            $filter = $request->get('filter');
+
+            if ($filter == 'terbaru') {
+                $data->latest('created_at');
+            } elseif ($filter == 'terlama') {
+                $data->oldest('created_at');
+            }
+        } else {
+            $data->latest();
+        }
+
         if ($request->ajax()) {
             return DataTables::eloquent($data)
                 ->filterColumn('name', function ($query, $keyword) {
@@ -33,22 +46,24 @@ class OrderItemsController extends Controller
                     return $data->customers->name;
                 })
                 ->addColumn('created_at', function ($data) {
-                    return  Carbon::parse($data->created_at)->format('d F Y/h.iA');
+                    return Carbon::parse($data->created_at)->format('d F Y / h.iA');
                 })
                 ->addColumn('action', function ($data) {
                     return "
-                            <button onclick='redirectDetail($data->id)' class='btn btn-primary'>Detail Pesanan</button>
-                            <button onclick='deleteData($data->id)' class='btn btn-danger text-white'>Hapus Data</button>
-                    ";
+                    <button onclick='redirectDetail($data->id)' class='btn btn-primary'>Detail Pesanan</button>
+                    <button onclick='deleteData($data->id)' class='btn btn-danger text-white'>Hapus Data</button>
+                ";
                 })
-                ->rawColumns(['action', 'image'])
+                ->rawColumns(['action'])
                 ->make(true);
         }
+
         $getData = $data->get();
         $deleteUrl = 'orderItem.delete';
         $title = "Data Pemesanan";
         return view('order.index', compact('request', 'getData', 'title', 'deleteUrl'));
     }
+
     public function show(Request $request, $id)
     {
         $data = OrderItems::with(['products', 'order'])->where('order_id', $id);

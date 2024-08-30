@@ -32,7 +32,7 @@ class LoginController extends Controller
         if (Auth::guard('customers')->attempt($credentials)) {
             $request->session()->regenerate();
             flash('Berhasil Login customers');
-            return redirect()->intended('/front-office/orders');
+            return redirect()->intended('/front-office/order-item');
         }
         if (Auth::guard('web')->attempt($credentials)) {
             $request->session()->regenerate();
