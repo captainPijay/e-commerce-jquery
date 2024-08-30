@@ -8,6 +8,13 @@
 
 4. Untuk file database nya berada di folder database dengan nama tes-fullstack.sql
 
-5. Ini merupakan website yang saya kerjakan dalam waktu kurang dari 24 jam, dikarenakan memiliki urusan mendesak, selanjutnya saya akan tetap mengembangkan website ini baik jika saya diterima maupun tidak
+5. Tutorial Menjalankan :
+- composer install
+- npm install
+- rename .env.example menjadi .env
+- migrasi dengan php artisan migrate
+- php artisan db:seed untuk melakukan seeding (atau impor sql)
+
+6. Ini merupakan website yang saya kerjakan dalam waktu kurang dari 24 jam, dikarenakan memiliki urusan mendesak, selanjutnya saya akan tetap mengembangkan website ini baik jika saya diterima maupun tidak
 
 Terima Kasih!!!
